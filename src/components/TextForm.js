@@ -62,23 +62,23 @@ export default function TextForm(props) {
 
     return (
     <>   
-    <div className="container"> 
+    <div> 
         <h2 className={`text-${props.mode ==='light'?'dark':'light'}`}>{props.heading}</h2> 
         <div className="mb-3">
         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="6"></textarea>
         </div>
-        <button className="btn btn-dark mx-1" id='butt' onClick={handleClearClick} >Clears Text</button>
-        <button className="btn btn-dark mx-1" id='butt' onClick={handleUpClick} >Convert to Uppercase</button>
-        <button className="btn btn-dark mx-1" id='butt' onClick={handleDownClick} >Convert to Lowercase</button>
-        <button className="btn btn-dark mx-1" id='butt' onClick={handleCopy} >Copy Text</button>
-        <button className="btn btn-dark mx-1" id='butt' onClick={handleExtraSpaces} >Remove Extra Spaces</button>
-        <button className="btn btn-dark mx-1" id='butt' onClick={speak} >Speak</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleClearClick} >Clears Text</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleUpClick} >Convert to Uppercase</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleDownClick} >Convert to Lowercase</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleCopy} >Copy Text</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
+        <button className="btn btn-dark mx-1 my-1" onClick={speak} >Speak</button>
     </div>
     <div>
-    <div className={`"container" text-${props.mode ==='light'?'dark':'light'}`}>
+    <div className={` text-${props.mode ==='light'?'dark':'light'}`}>
         <h1>Text Summary</h1>
-        <p><b> {text.split(" ").length-1} words and {text.length} characters</b> </p>
-        <p>{0.008 * text.split(" ").length} minutes to read. </p>
+        <p><b> {text.split(/\s+/).filter((element)=> {return element.length!==0}).length} words and {text.length} characters</b> </p>
+        <p>{0.008 * text.split(" ").filter((element)=> {return element.length!==0}).length} minutes to read. </p>
         <h1>Preview</h1>
         <p>{text.length>0?text:"Enter something in the text-box above to see here"}</p>
         <input type="text" value={word} onChange={handlewordchange} />
